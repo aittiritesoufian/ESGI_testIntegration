@@ -24,13 +24,14 @@ class Etudiant
      * @param $age
      * @param $demande
      */
-    public function __construct($mail, $name, $firstname, $age, Session $demande)
+    public function __construct($mail, $name, $firstname, $age, Session $demande ,EmailSender $emailSender)
     {
         $this->mail = $mail;
         $this->name = $name;
         $this->firstname = $firstname;
         $this->age = $age;
         $this->demande = $demande;
+        $this->emailSender = $emailSender;
     }
 
     /**
@@ -112,6 +113,24 @@ class Etudiant
     {
         $this->demande = $demande;
     }
+
+    /**
+     * @return EmailSender
+     */
+    public function getEmailSender()
+    {
+        return $this->emailSender;
+    }
+
+    /**
+     * @param EmailSender $emailSender
+     */
+    public function setEmailSender($emailSender)
+    {
+        $this->emailSender = $emailSender;
+    }
+
+
 
 
     public function isValid()

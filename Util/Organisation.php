@@ -6,6 +6,10 @@ namespace App\Util;
 class Organisation {
 
     /**
+     * @var int
+     */
+    private $id;
+    /**
      * @var string
      */
     private $name;
@@ -46,6 +50,20 @@ class Organisation {
     /**
      * @return string
      */
+    public function getId(): string {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     */
+    public function setId(string $id): void {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
     public function getName(): string {
         return $this->name;
     }
@@ -80,17 +98,23 @@ class Organisation {
 
     //créer une Session
     public function createSession(){
-
+        $session = new Session(null, "Cours",  "Test Unitaire",  "ceci est un cours de test unitaire",  new DateTime("2019-06-28 11:00:00"));
+        $session->save();
+        return true;
     }
 
     //ajout d'un formateur à une session
-    public function addFormateur(){
-
+    public function addFormateur($session_id,$formateur){
+        $session = new Session($session_id);
+        $session->init();
+        $session->addFormateur($formateur);
     }
 
     //validation de l'inscription des Students à une session
-    public function validateStudent(){
-
+    public function validateEtudiant($session_id,$etudiant){
+        $session = new Session($session_id);
+        $session->init();
+        // $session-
     }
 
     //ajout d'une salle à une session

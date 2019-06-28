@@ -17,14 +17,20 @@ class Formateur {
      * @var string
      */
     private $lastname;
+    /**
+     * @var array
+     */
+    private $courses;
 
 
 
-    public function __construct(?string $email, ?string $firstname, ?string $lastname) {
+
+    public function __construct(?string $email, ?string $firstname, ?string $lastname, array $courses) {
 
         $this->email = $email;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
+        $this->courses = $courses;
     }
 
     public function isValid() {
@@ -37,6 +43,10 @@ class Formateur {
         if(!isset($this->lastname) || empty($this->lastname)){
             throw new \Exception('Please enter a lastname');
         }
+        return true;
+    }
+
+    public function validerInscription() {
         return true;
     }
 
@@ -80,6 +90,22 @@ class Formateur {
      */
     public function setLastname(?string $lastname): void {
         $this->lastname = $lastname;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCourses()
+    {
+        return $this->courses;
+    }
+
+    /**
+     * @param array $courses
+     */
+    public function setCourses($courses)
+    {
+        $this->courses = $courses;
     }
 
 

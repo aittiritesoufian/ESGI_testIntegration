@@ -2,7 +2,6 @@
 namespace Tests;
 
 use App\Util\Formateur;
-use http\Exception;
 use PHPUnit\Framework\TestCase;
 
 class FormateurTest extends TestCase

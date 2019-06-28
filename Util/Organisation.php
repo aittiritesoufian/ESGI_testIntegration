@@ -8,25 +8,22 @@ class Organisation {
     /**
      * @var string
      */
-    private $nom;
+    private $name;
     /**
      * @var string
      */
     private $adresse;
-    
-    public function __construct(string $nom, string $adresse) {
-        $this->nom = $nom;
+
+    public function __construct(string $name, string $adresse) {
+        $this->name = $name;
         $this->adresse = $adresse;
     }
 
     public function isValid() {
-        if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
-            throw new \Exception('Wrong email format');
-        }
-        if(!isset($this->firstname) || empty($this->firstname)){
+        if(!isset($this->name) || empty($this->name)){
             throw new \Exception('Please enter a firstname');
         }
-        if(!isset($this->lastname) || empty($this->lastname)){
+        if(!isset($this->adresse) || empty($this->adresse)){
             throw new \Exception('Please enter a lastname');
         }
         return true;
@@ -61,18 +58,24 @@ class Organisation {
     }
     
     //persister l'Organisation
-    public function save(){
-        $encoded = json_encode(array("name" => $this.getName(), "description" => $this.getAdresse()));
+    public function save(): void {
+        $encoded = json_encode(
+            array(
+            "name" => $this->getName(),
+            "description" => $this->getAdresse()
+            )
+        );
 
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "localhost:3000");
+        curl_setopt($ch, CURLOPT_URL, "localhost:3000/organisation");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS,  $encoded);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $encoded);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         $output = curl_exec($ch);
         curl_close($ch);
 
-        return $output;
+        var_dump($output);
     }
 
     //créer une Session

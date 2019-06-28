@@ -154,7 +154,7 @@ class Etudiant
 
     public function demandeInscriptiton($demande)
     {
-        if ($this->$demande != null) {
+        if ($this->demande != null) {
             return true;
         } else {
             throw new Exception("Demande non renseigné");

@@ -45,6 +45,10 @@ class Formateur {
         return true;
     }
 
+    public function validerInscription() {
+
+    }
+
     /**
      * @return string
      */

@@ -33,15 +33,20 @@ class Session {
      * @var array
      */
     private $formateurs;
+    /**
+     * @var string
+     */
+    private $salle;
 
 
 
-    public function __construct(int $id = null, string $type = "", string $intitule = "", string $description = "",\DateTime  $date=null) {
-
+    public function __construct(int $id = null, string $type = "", string $intitule = "", string $description = "",\DateTime  $date=null,int $salle) {
+        $this->id = $id;
         $this->type = $type;
         $this->intitule = $intitule;
         $this->description = $description;
         $this->date = $date;
+        $this->salle = $salle;
     }
 
 
@@ -136,13 +141,29 @@ class Session {
     /**
      * @param date $date
      */
+    public function setSalle($salle)
+    {
+        $this->salles = $salle;
+    }
+    
+    /**
+     * @return date
+     */
+    public function getSalle()
+    {
+        return $this->salle;
+    }
+
+    /**
+     * @param array $etudiant
+     */
     public function addEtudiant($etudiant)
     {
         array_push($this->etudiants,$etudiant);
     }
 
     /**
-     * @return date
+     * @return array
      */
     public function getFormateurs()
     {
@@ -150,7 +171,7 @@ class Session {
     }
 
     /**
-     * @param date $date
+     * @param array $formateur
      */
     public function addFormateur($formateur)
     {
@@ -186,6 +207,7 @@ class Session {
             $this->setIntitule = json_decode($output)['intitule'];
             $this->setDescription = json_decode($output)['description'];
             $this->setDate = json_decode($output)['date'];
+            $this->setSalle = json_decode($output)['salle'];
             $this->setEtudiants = json_decode(json_decode($output)['etudiants']);
             $this->setFormateurs = json_decode(json_decode($output)['formateurs']);
 
@@ -201,6 +223,7 @@ class Session {
                 "intitule" => $this->getIntitule(),
                 "description" => $this->getDescription(),
                 "date" => $this->getDate(),
+                "salle" => $this->getSalle(),
                 "formateurs" => $this->getFormateurs(),
                 "etudiants" => $this->getEtudiants()
             )
@@ -225,6 +248,7 @@ class Session {
                 "intitule" => $this->getIntitule(),
                 "description" => $this->getDescription(),
                 "date" => $this->getDate(),
+                "salle" => $this->getSalle(),
                 "formateurs" => $this->getFormateurs(),
                 "etudiants" => $this->getEtudiants()
             )

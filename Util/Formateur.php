@@ -22,9 +22,6 @@ class Formateur {
      */
     private $courses;
 
-
-
-
     public function __construct(?string $email, ?string $firstname, ?string $lastname, array $courses) {
 
         $this->email = $email;

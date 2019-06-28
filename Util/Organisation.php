@@ -120,7 +120,11 @@ class Organisation {
     }
 
     //ajout d'une salle à une session
-    public function addSalle(){
-        
+    public function addSalle($salle){
+        $session = new Session($session_id);
+        $session->init();
+        $session->setSalle($salle);
+        $session->update();
+        return true;
     }
 }

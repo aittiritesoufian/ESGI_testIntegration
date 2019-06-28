@@ -34,6 +34,28 @@ class Etudiant
     }
 
 
+    public function save() {
+        $encoded = json_encode(
+            array(
+                "mail" => $this->getMail(),
+                "name" => $this->getName(),
+                "firstname" => $this->getFirstname(),
+                "age" => $this->getAge(),
+                "demande" => $this->getDemande()
+            )
+        );
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "localhost:3000/etudiant");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $encoded);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_exec($ch);
+        return curl_getinfo($ch, CURLINFO_RESPONSE_CODE) ;
+    }
+
+
     /**
      * @return mixed
      */
@@ -139,5 +161,29 @@ class Etudiant
         }
 
     }
+
+
+    public function save(): void {
+        $encoded = json_encode(
+            array(
+                "name" => $this->getName(),
+                "mail" => $this->getMail(),
+                "firstname" => $this->getFirstname(),
+                "age" => $this->getAge()
+            )
+        );
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "localhost:3000/etudiant");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $encoded);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        $output = curl_exec($ch);
+        curl_close($ch);
+
+        var_dump($output);
+    }
+
 
 }

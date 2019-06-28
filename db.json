@@ -1,8 +1,27 @@
 {
-  "organisation": [],
+  "organisation": [
+    {
+      "name": "esgi",
+      "description": "paris",
+      "id": 1
+    },
+    {
+      "name": "esgi",
+      "description": "paris",
+      "id": 2
+    }
+  ],
   "session": [],
   "formation": [],
-  "etudiant": [],
+  "etudiant": [
+    {
+      "name": " abdalla",
+      "mail": "omar.abdalla@gmail.com",
+      "firstname": "omar",
+      "age": "18",
+      "id": 2
+    }
+  ],
   "salle": [
     {
       "name": 1

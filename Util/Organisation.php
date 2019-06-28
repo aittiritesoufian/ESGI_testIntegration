@@ -71,12 +71,12 @@ class Organisation {
     /**
      * @param string $name
      */
-    public function setName(string $name): void {
+    public function setName(string $name) {
         $this->name = $name;
     }
     
     //persister l'Organisation
-    public function save(): void {
+    public function save() {
         $encoded = json_encode(
             array(
             "name" => $this->getName(),
@@ -90,10 +90,8 @@ class Organisation {
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $encoded);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        $output = curl_exec($ch);
-        curl_close($ch);
-
-        var_dump($output);
+        curl_exec($ch);
+        return curl_getinfo($ch, CURLINFO_RESPONSE_CODE) ;
     }
 
     //créer une Session

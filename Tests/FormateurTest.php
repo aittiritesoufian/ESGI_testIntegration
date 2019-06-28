@@ -2,6 +2,7 @@
 namespace Tests;
 
 use App\Util\Formateur;
+use Exception;
 use PHPUnit\Framework\TestCase;
 
 class FormateurTest extends TestCase
@@ -11,7 +12,7 @@ class FormateurTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->formateur = new Formateur('formateur@gmail.com', 'Toto', 'titi');
+        $this->formateur = new Formateur('formateur@gmail.com', 'Toto', 'titi', []);
     }
 
     public function testNominal()
@@ -22,22 +23,25 @@ class FormateurTest extends TestCase
     public function testWrongEmail()
     {
         $this->formateur->setEmail('abc.com');
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         $this->expectExceptionMessage('Wrong email format');
+        $this->formateur->isValid();
     }
 
     public function testEmptyFirstname()
     {
         $this->formateur->setFirstname(null);
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         $this->expectExceptionMessage('Please enter a firstname');
+        $this->formateur->isValid();
     }
 
     public function testEmptyLastname()
     {
         $this->formateur->setLastname(null);
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         $this->expectExceptionMessage('Please enter a lastname');
+        $this->formateur->isValid();
     }
 
 

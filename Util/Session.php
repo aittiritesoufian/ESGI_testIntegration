@@ -96,7 +96,27 @@ class Session {
     {
         $this->description = $description;
     }
+    
+    //persister l'Organisation
+    public function save(): void {
+        $encoded = json_encode(
+            array(
+            "type" => $this->type,
+            "intitule" => $this->intitule,
+            "description" => $this->description,
+            "date" => $this->date,
+            )
+        );
 
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "localhost:3000/session");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $encoded);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        $output = curl_exec($ch);
+        curl_close($ch);
 
-
+        var_dump($output);
+    }
 }

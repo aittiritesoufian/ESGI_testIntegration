@@ -211,12 +211,12 @@ class Session {
             $this->setEtudiants = json_decode(json_decode($output)['etudiants']);
             $this->setFormateurs = json_decode(json_decode($output)['formateurs']);
 
-            var_dump($output);
+            return 200;
         }
     }
     
     //persister l'Organisation
-    public function save(): void {
+    public function save() {
         $encoded = json_encode(
             array(
                 "type" => $this->getType(),
@@ -238,7 +238,7 @@ class Session {
         $output = curl_exec($ch);
         curl_close($ch);
 
-        var_dump($output);
+        return curl_getinfo($ch, CURLINFO_RESPONSE_CODE) ;
     }
 
     public function update() {
@@ -262,6 +262,6 @@ class Session {
         $output = curl_exec($ch);
         curl_close($ch);
 
-        var_dump($output);
+        return curl_getinfo($ch, CURLINFO_RESPONSE_CODE) ;
     }
 }

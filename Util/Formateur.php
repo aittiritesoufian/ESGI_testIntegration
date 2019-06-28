@@ -46,7 +46,7 @@ class Formateur {
     }
 
     public function validerInscription() {
-
+        return true;
     }
 
     /**

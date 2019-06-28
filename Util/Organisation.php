@@ -107,6 +107,7 @@ class Organisation {
         $session->init();
         $session->addFormateur($formateur);
         $session->update();
+        return true;
     }
 
     //validation de l'inscription des Students à une session
@@ -114,10 +115,12 @@ class Organisation {
         $session = new Session($session_id);
         $session->init();
         // $session-
+
+        return true;
     }
 
     //ajout d'une salle à une session
     public function addSalle(){
-
+        
     }
 }

@@ -13,9 +13,7 @@ class Organisation {
      * @var string
      */
     private $adresse;
-
-
-
+    
     public function __construct(string $nom, string $adresse) {
         $this->nom = $nom;
         $this->adresse = $adresse;
@@ -60,5 +58,40 @@ class Organisation {
      */
     public function setName(string $name): void {
         $this->name = $name;
+    }
+    
+    //persister l'Organisation
+    public function save(){
+        $encoded = json_encode(array("name" => $this.getName(), "description" => $this.getAdresse()));
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "localhost:3000");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS,  $encoded);
+        $output = curl_exec($ch);
+        curl_close($ch);
+
+        return $output;
+    }
+
+    //créer une Session
+    public function createSession(){
+
+    }
+
+    //ajout d'un formateur à une session
+    public function addFormateur(){
+
+    }
+
+    //validation de l'inscription des Students à une session
+    public function validateStudent(){
+
+    }
+
+    //ajout d'une salle à une session
+    public function addSalle(){
+
     }
 }

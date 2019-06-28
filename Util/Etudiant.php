@@ -5,27 +5,33 @@ namespace App\Util;
 
 
 use PHPUnit\Runner\Exception;
+use App\Util\Session;
 
-class Student
+class Etudiant
 {
 
     private $mail;
     private $name;
     private $firstname;
     private $age;
+    private $demande;
+
     /**
-     * @param String $mail
-     * @param String $name
-     * @param String $firstname
-     * @param Int $age
+     * Etudiant constructor.
+     * @param $mail
+     * @param $name
+     * @param $firstname
+     * @param $age
+     * @param $demande
      */
-    public function __construct(String $mail, String $name, String $firstname, Int $age){
+    public function __construct($mail, $name, $firstname, $age, Session $demande)
+    {
         $this->mail = $mail;
         $this->name = $name;
         $this->firstname = $firstname;
         $this->age = $age;
+        $this->demande = $demande;
     }
-
 
 
     /**
@@ -92,16 +98,44 @@ class Student
         $this->age = $age;
     }
 
+    /**
+     * @return \App\Util\Session
+     */
+    public function getDemande()
+    {
+        return $this->demande;
+    }
+
+    /**
+     * @param \App\Util\Session $demande
+     */
+    public function setDemande($demande)
+    {
+        $this->demande = $demande;
+    }
+
+
     public function isValid()
     {
-        if (filter_var($this->mail, FILTER_VALIDATE_EMAIL)){
-            if($this->name != null and $this->firstname != null){
+        if (filter_var($this->mail, FILTER_VALIDATE_EMAIL)) {
+            if ($this->name != null and $this->firstname != null) {
                 return true;
-            }else{
+            } else {
                 throw new Exception("Nom ou prénom non renseigné");
             }
         } else {
             throw new Exception("Email invalide");
+        }
+
+    }
+
+
+    public function demandeInscriptiton($demande)
+    {
+        if ($this->$demande != null) {
+            return true;
+        } else {
+            throw new Exception("Demande non renseigné");
         }
 
     }

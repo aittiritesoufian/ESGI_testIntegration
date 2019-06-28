@@ -20,7 +20,7 @@ class Formateur {
 
 
 
-    public function __construct(string $email, string $firstname, string $lastname) {
+    public function __construct(?string $email, ?string $firstname, ?string $lastname) {
 
         $this->email = $email;
         $this->firstname = $firstname;
@@ -64,7 +64,7 @@ class Formateur {
     /**
      * @param string $firstname
      */
-    public function setFirstname(string $firstname): void {
+    public function setFirstname(?string $firstname): void {
         $this->firstname = $firstname;
     }
 
@@ -78,7 +78,7 @@ class Formateur {
     /**
      * @param string $lastname
      */
-    public function setLastname(string $lastname): void {
+    public function setLastname(?string $lastname): void {
         $this->lastname = $lastname;
     }
 

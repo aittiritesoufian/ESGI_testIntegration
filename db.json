@@ -1,75 +1,17 @@
 {
-  "todos": [
+  "organisation": [],
+  "session": [],
+  "formation": [],
+  "etudiant": [],
+  "salle": [
     {
-      "id": "1",
-      "description": "desciption of todo"
+      "name": 1
     },
     {
-      "todos": {
-        "description": "sdsddsqdqd de la todo",
-        "id": 2
-      },
-      "id": "XMhPvUs"
+      "name": 2
     },
     {
-      "description": "deuxième todo",
-      "id": 2
-    }
-  ],
-  "users": [
-    {
-      "id": 1,
-      "firstname": "soufian",
-      "lastname": "AIT TIRITE",
-      "email": "saittirite@myges.fr"
-    },
-    {
-      "firstname": "soufian",
-      "lastname": "AIT TIRITE",
-      "email": "saittirite@myges.fr",
-      "id": 2
-    },
-    {
-      "id": "{{id}}",
-      "firstname": "soufian",
-      "lastname": "AIT TIRITE",
-      "email": "saittirite@myges.fr"
-    },
-    {
-      "id": "25",
-      "firstname": "soufian",
-      "lastname": "AIT TIRITE",
-      "email": "saittirite@myges.fr"
-    },
-    {
-      "id": "22",
-      "firstname": "soufian",
-      "lastname": "AIT TIRITE",
-      "email": "saittirite@myges.fr"
-    },
-    {
-      "id": "23",
-      "firstname": "soufian",
-      "lastname": "AIT TIRITE",
-      "email": "saittirite@myges.fr"
-    },
-    {
-      "id": "26",
-      "firstname": "soufian",
-      "lastname": "AIT TIRITE",
-      "email": "saittirite@myges.fr"
-    },
-    {
-      "id": "27",
-      "firstname": "soufian",
-      "lastname": "AIT TIRITE",
-      "email": "saittirite@myges.fr"
-    },
-    {
-      "id": "29",
-      "firstname": "soufian",
-      "lastname": "AIT TIRITE",
-      "email": "saittirite@myges.fr"
+      "name": 3
     }
   ]
 }
